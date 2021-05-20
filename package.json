@@ -3,23 +3,55 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fontsource/roboto": "^4.3.0",
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "^0.21.1",
+    "qs": "^6.10.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.6.2",
     "react-redux": "^7.2.4",
-    "react-scripts": "4.0.3"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "styled-components": "^5.3.0",
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.+(js|jsx|json|css|md)\""
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "plugin:prettier/recommended"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "endOfLine": "auto"
+  },
+  "lint-staged": {
+    "src/**/*.+(js|jsx)": [
+      "eslint --fix",
+      "git add"
+    ],
+    "src/**/*.+(json|css|md)": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "browserslist": {
     "production": [
@@ -32,5 +64,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "devDependencies": {
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.0"
+  },
+  "homepage": "/"
 }
